@@ -1,0 +1,158 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">
+<title>EMAKINOCO v1.1｜制作台・第3版</title>
+<style>
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;color:#273027;background:#e9ebe4;font:14px/1.45 'Segoe UI',Meiryo,sans-serif}.outer{padding:9px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.hud{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.muted,small{color:var(--muted,#535e50)}.app{--bg:#f3f4f0;--paper:#fff;--ink:#252a23;--line:#d9ddd2;--sel:#e4e9d9;--muted:#515b4e;--acc:#536339;--ledge:#e7eae1;color:var(--ink);background:var(--bg);width:min(100%,1550px);height:max(600px,calc(100dvh - 58px));margin:auto;border:1px solid var(--line);border-radius:9px;overflow:hidden;display:grid;grid-template-rows:40px minmax(0,1fr)}.app[data-size="100"]{width:min(100%,1280px);height:720px}.app[data-size="125"]{width:min(100%,1024px);height:576px}.app.dark{color-scheme:dark;--bg:#171918;--paper:#222521;--ink:#edf0e6;--line:#43493e;--sel:#353e2e;--muted:#bfc8b7;--acc:#c4cda7;--ledge:#141914}
+button,textarea,select{font:inherit;color:inherit}button,select{cursor:pointer;min-height:31px;padding:4px 9px;background:var(--paper,#f9faf7);border:1px solid var(--line,#ccd2c5);border-radius:6px}button:hover{background:var(--sel,#dce4d4)}button:disabled{cursor:default;opacity:.54}button[aria-pressed=true]{background:var(--sel);border-color:var(--acc)}button.primary{background:#526238;color:#fff;border-color:#526238;font-weight:650}.dark button.primary{background:#c0c99f;color:#20261a}.flat{background:transparent;border-color:transparent}button:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--acc,#526238);outline-offset:2px}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:0 13px;background:var(--paper);border-bottom:1px solid var(--line)}.brand{font-weight:750;letter-spacing:.1em}.bar small{margin-left:7px}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(325px,32%);min-height:0}.work{margin:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;padding:15px 21px 12px;gap:9px}.kicker{font-size:11px;letter-spacing:.09em;color:var(--muted)}h1,h2,p{margin:0}h1{font-size:22px}.art{min-height:0;background:var(--ledge);border-radius:7px;display:grid;overflow:hidden}.art svg{height:100%;width:100%}.art[data-result="true"] svg{filter:hue-rotate(-22deg) brightness(1.08)}figcaption,.split{display:flex;align-items:center;justify-content:space-between;gap:7px}figcaption{font-size:12px;color:var(--muted)}
+.pane{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;background:var(--paper);border-left:1px solid var(--line);min-height:0;min-width:0}.phead,.foot,.composer{padding:8px 11px}.phead{border-bottom:1px solid var(--line)}h2{font-size:16px}.phead .split+.split{margin-top:4px}.row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.tiny{font-size:12px}.log{overflow:auto;padding:9px 11px;min-height:0;overflow-wrap:anywhere}.msg{margin:0 0 10px}.msg p{white-space:pre-wrap}.msg.user{background:var(--bg);border-radius:7px;padding:5px 8px}.msg small{display:block;margin-bottom:2px}.msg button{margin-top:4px}.proposal{border-left:2px solid var(--acc);padding:4px 7px;margin:5px 0;background:var(--bg);border-radius:0 5px 5px 0}.proposal p{margin-bottom:4px}.composer{border-top:1px solid var(--line);background:var(--paper)}textarea{display:block;width:100%;min-height:37px;resize:none;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 7px}.composer .split{margin-top:4px}.foot{border-top:1px solid var(--line);background:var(--bg);min-height:46px}.foot .split{align-items:center}.foot small,.proposal p{overflow-wrap:anywhere}.tagSheet{padding:6px 11px;border-top:1px solid var(--line);max-height:125px;overflow:auto}.tagSheet .row{margin:3px 0}.removed{color:var(--muted);text-decoration:line-through}.added{font-weight:700;color:var(--acc)}
+dialog{width:min(490px,calc(100vw - 22px));max-height:min(70vh,450px);padding:12px 15px;border-radius:8px;color:var(--ink);background:var(--paper);border:1px solid var(--line)}dialog::backdrop{background:#191d17a0}.dlist{padding:0;list-style:none}.dlist li{padding:6px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.dlist small{display:block}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.notice{font-size:12px;min-height:0}.notice button{min-height:26px}.compact .notice{padding-top:3px}
+@media(max-width:735px){.app{height:auto;min-height:870px}.app[data-size]{height:auto}.layout{grid-template-columns:1fr;grid-template-rows:300px minmax(585px,1fr)}.pane{border-left:0;border-top:1px solid var(--line)}.work{padding:10px}.bar small{display:none}}
+</style>
+<div class="outer"><div><strong>v1.1 / 操作比較</strong> <small id="sizeHint">現在の窓</small></div><div class="hud"><label>窓 <select id="size"><option value="auto">現在</option><option value="100">1280×720</option><option value="125">1280×720 / 125%相当</option></select></label><label>生成導線 <select id="flow"><option value="A">A · 会話のチップ</option><option value="B">B · 反映 → 生成</option></select></label></div></div>
+<main class="app" id="app" data-size="auto">
+<div class="bar"><div><span class="brand">◈ EMAKINOCO</span> <small>制作台 / ダミー作品</small></div><div class="row"><button id="guide" class="flat">試す操作</button><button id="theme" aria-pressed="false">ダーク</button></div></div>
+<div class="layout">
+<figure class="work"><div><p class="kicker">サンプル / プレビュー</p><h1 id="artTitle">霧の尾根</h1></div><div class="art" id="art"><svg viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid meet" role="img" aria-label="霧の谷のイラスト（ダミー）">
+<defs>
+<linearGradient id="sky"><stop stop-color="#dcd1a7"/><stop offset="1" stop-color="#9aaea3"/></linearGradient>
+<linearGradient id="ridge" x1="0" y1="0" x2=".65" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#40594d"/><stop offset="1" stop-color="#182e2a"/></linearGradient>
+<linearGradient id="mist" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f1eaca" stop-opacity=".03"/><stop offset=".55" stop-color="#ede4c6" stop-opacity=".54"/><stop offset="1" stop-color="#d0d5ba" stop-opacity=".11"/></linearGradient>
+
+
+<path id="tree" d="M0 0L-4 13h2l-6 10h4l-7 9h9v6h4v-6h9l-7-9h4L2 13h2Z"/>
+</defs>
+<path fill="url(#sky)" d="M0 0h1200v760H0z"/>
+<circle cx="766" cy="178" r="54" fill="#efe2b5"/>
+<path fill="#829689" d="M0 398 122 337 236 372 309 328 392 401 534 325 609 363 695 302 772 351 870 322 954 354 1063 278 1200 330v430H0Z"/>
+
+<path fill="#6c8679" d="M0 397 99 377 195 429 262 423 331 481 425 499 501 518 599 523 733 500 850 552 1200 497v263H0Z"/>
+<path fill="url(#mist)" d="M0 452c160-23 311 30 539 46 235 17 394-57 661-87v213H0Z"/>
+<path fill="#415e51" d="M1200 452 1095 461 1014 503 929 502 834 551 765 565 661 632 571 661 479 760h721Z"/>
+<path fill="url(#ridge)" d="M0 410 114 443 179 477 276 494 336 532 424 541 469 568 530 579 598 631 660 650 734 760H0Z"/>
+<path fill="#233b31" d="M0 599 122 624 229 602 337 643 426 641 542 694 597 760H0Zm1200-30-93 35-102 6-95 43-76 17-133 90h499Z"/>
+<g fill="#20382f"><use href="#tree" transform="translate(110 558) scale(2.7)"/><use href="#tree" transform="translate(260 576) scale(2.9)"/><use href="#tree" transform="translate(1120 540) scale(3.4)"/></g>
+
+</svg></div><figcaption><span id="artDesc">画像全体を表示</span><span id="count">模擬生成 0枚</span></figcaption></figure>
+<section class="pane" aria-label="プロンプトメーカー">
+<div class="phead"><div class="split"><h2>プロンプトメーカー</h2><button id="notes">制作メモ <span id="nCount">0</span></button></div>
+<div class="split"><div class="row" role="group" aria-label="制作モード"><button id="general" aria-pressed="true">一般向け</button><button id="adult" aria-pressed="false">成人向け</button></div><small>模擬応答 / 通信なし</small></div><div id="autoNotice" class="notice split" hidden><span id="autoText"></span><button id="autoUndo">取り消し</button></div></div>
+<div class="log" id="log" role="region" aria-label="会話履歴" tabindex="0"></div>
+<div><div id="tags" class="tagSheet" hidden><div class="split"><strong>タグ候補／現在の条件</strong><button id="tagClose" class="tiny">閉じる</button></div><div id="tagSet" class="row"></div><small>候補は「タグを作って」の後だけ表示。</small></div>
+<div class="composer"><label class="sr" for="input">相談・制作の指示</label><textarea rows="1" id="input" maxlength="500" placeholder="何を変えたいですか？"></textarea><div class="split"><div class="row"><button id="example" class="flat tiny">文例</button><button id="tagToggle" class="tiny" hidden>タグを開く</button></div><div class="row"><button id="stop" hidden>停止</button><button id="send">送信</button></div></div></div></div>
+<div class="foot"><div class="split"><small id="gState">生成には明示操作が必要です。</small><button id="jump">生成の確認へ</button><button id="doB" class="primary" hidden disabled>生成する</button></div></div>
+</section></div>
+<div class="sr" id="live" role="status" aria-live="polite"></div>
+<dialog id="notesD" aria-labelledby="notesH"><div class="split"><h2 id="notesH">制作メモ</h2><button data-close="notesD" aria-label="制作メモを閉じる">×</button></div><ul id="nList" class="dlist"></ul><label class="tiny" for="own">自分で書く</label><textarea id="own" rows="1" maxlength="150"></textarea><div class="row"><button id="addOwn">追加</button><button id="undoMemo">直前のメモ変更を戻す</button></div></dialog>
+<dialog id="examplesD" aria-labelledby="egH"><div class="split"><h2 id="egH">試す操作</h2><button data-close="examplesD" aria-label="文例を閉じる">×</button></div><p><small>押すと入力欄に入ります。送信は別です。</small></p><div class="row" id="examples"></div></dialog>
+<dialog id="adultD" aria-labelledby="adH"><h2 id="adH">成人向けに切り替えますか</h2><p>会話・メモ・条件・結果を分けます。両方ともダミー画像です。</p><div class="row"><button data-close="adultD" autofocus>キャンセル</button><button id="adOK" class="primary">切り替え</button></div></dialog>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), root=$('app');
+const ops=['銀髪にしよう','夜にして','逆光はなし','銀髪にしようかなぁ','相談したい','今日はいい天気','銀髪はやめて','タグを作って','光を弱めて','前の案に戻して','生成して','全然違う構図で、キャラも変えたい','新しい絵にしよう'];
+const base={light:'逆光・強め',hair:'黒髪',time:'夕暮れ',scene:'山の稜線',color:'落ち着いた色'};
+const keyNames={light:'光',hair:'髪',time:'時間帯',scene:'構図',color:'色調'};
+const fresh=()=>({memo:[],mu:[],versions:[],log:[],recipe:{...base},history:[],rev:0,staged:null,fromMemo:{},tags:false,expanded:false,count:0,draft:'',notice:null});
+const all={general:fresh(),adult:fresh()};let m='general',flow='A',serial=0,timer=0,current=null,adultOk=false,busy=null;
+const s=()=>all[m], say=t=>{$('live').textContent=t};
+const node=(type,value,cls)=>{let el=document.createElement(type);if(value!=null)el.textContent=value;if(cls)el.className=cls;return el};
+const btn=(label,act,cls)=>{const b=node('button',label,cls);b.onclick=act;return b};
+const fmt=r=>Object.values(r).filter(Boolean).join(' ／ ');
+function frame(){$('sizeHint').textContent=$('size').value==='125'?'実効 1024×576 CSS px':$('size').value==='100'?'1280×720 CSS px':'ブラウザー幅に合わせる'}
+$('size').onchange=()=>{root.dataset.size=$('size').value;frame()};
+$('theme').onclick=()=>{$('theme').setAttribute('aria-pressed',root.classList.toggle('dark'))};
+for(const el of document.querySelectorAll('[data-close]'))el.onclick=()=>$(el.dataset.close).close();
+for(const op of ops)$('examples').append(btn(op,()=>{$('examplesD').close();$('input').value=op;$('input').focus()},'tiny'));
+$('example').onclick=$('guide').onclick=()=>$('examplesD').showModal();
+function notes(){const a=s(),l=$('nList');$('nCount').textContent=a.memo.length;l.replaceChildren();
+if(!a.memo.length)l.append(node('li','制作メモはまだありません。'));
+for(const n of a.memo){const el=node('li');el.append(node('strong',n.text),node('small','出所：'+n.source));l.append(el)}
+$('undoMemo').disabled=!a.mu.length;
+$('autoNotice').hidden=!a.notice;if(a.notice)$('autoText').textContent=a.notice}
+function stale(a){a.rev++;a.staged=null;foot()}
+function memo(key,text,source,notice){const a=s(),other=a.memo.filter(n=>n.key!==key);if(!text&&other.length===a.memo.length)return false;
+a.mu.push(a.memo);a.memo=text?[...other,{key,text,source}]:other;a.notice=notice;if(['hair','time','light'].includes(key)){stale(a);a.needsTags=true;}notes();say(notice||'制作メモを更新しました。');return true}
+function undoNote(){const a=s();if(!a.mu.length)return;const was=a.memo;a.memo=a.mu.pop();if(['hair','time','light'].some(k=>was.find(n=>n.key===k)!==a.memo.find(n=>n.key===k))){stale(a);a.needsTags=true}if(a.tags&&syncFromMemo())a.log.push({by:'system',text:'生成条件もメモに合わせて戻しました。'});a.notice=null;notes();draw();if($('notesD').open)$('own').focus();else $('notes').focus();say('メモ変更を取り消しました。')}
+$('notes').onclick=()=>{notes();$('notesD').showModal()};$('autoUndo').onclick=$('undoMemo').onclick=undoNote;
+$('addOwn').onclick=()=>{const v=$('own').value.trim();if(v)memo('own'+ ++serial,v,'自分で入力',null);$('own').value='';$('own').focus()};
+const decision=t=>{
+const a=t.trim().replace(/[。！!]+$/u,'');
+if(/^(銀髪にしよう|銀髪にして|銀髪で決定)$/u.test(a))return ['hair','銀髪にする'];
+if(/^(夜にして|夜にしよう|夜で決定)$/u.test(a))return ['time','夜にする'];
+if(/^(逆光はなし|逆光なしで|逆光はなしにして)$/u.test(a))return ['light','逆光なし'];
+if(/^(銀髪はやめて|銀髪の決定は撤回)$/u.test(a))return ['hair',null];
+return null};
+function foot(){const a=s();$('jump').hidden=flow!=='A';$('jump').disabled=!!current;$('doB').hidden=flow!=='B';$('doB').disabled=!!busy||!!current||!a.staged;
+$('gState').textContent=busy&&busy.mode===m?'模擬生成中…':flow==='A'?'会話のチップで生成を確定。':a.staged?'反映済み · まだ生成していません。':'条件を反映すると生成できます。';
+$('count').textContent='模擬生成 '+a.count+'枚';$('art').dataset.result=a.count>0;$('artTitle').textContent=a.count?'霧の尾根 / 習作 '+a.count:'霧の尾根'};
+function tagUI(){const a=s(),b=$('tagToggle');b.hidden=!a.tags;b.textContent=a.expanded?'タグを閉じる':'タグを開く';b.setAttribute('aria-expanded',a.expanded);$('tags').hidden=!a.tags||!a.expanded;
+$('tagSet').textContent=fmt(a.recipe)}
+function tags(open){s().expanded=open;tagUI();(open?$('tagClose'):$('tagToggle')).focus()}
+$('tagToggle').onclick=()=>tags(!s().expanded);$('tagClose').onclick=()=>tags(false);
+function patch(r){const a=s(),old=a.recipe;if(fmt(old)===fmt(r))return null;
+const d={old:{...old},next:{...r},at:a.rev+1};a.history.push({...old});a.recipe={...r};a.rev++;a.staged=null;tagUI();foot();return d}
+function previous(){const a=s(),old=a.recipe,last=a.history.pop();if(!last)return null;
+const d={old:{...old},next:{...last},at:a.rev+1,restored:true};a.recipe={...last};a.rev++;a.staged=null;tagUI();foot();return d}
+function undoPatch(d){const a=s();if(a.rev!==d.at)return;
+if(d.restored)a.history.push({...d.next});else a.history.pop();
+a.recipe={...d.old};a.rev++;a.staged=null;
+if(d.memoLink&&d.memoBefore){a.memo=d.memoBefore.slice();const i=a.mu.lastIndexOf(d.memoBefore);if(i>=0)a.mu.splice(i,1);if(d.fmBefore)a.fromMemo=JSON.parse(JSON.stringify(d.fmBefore));a.notice=null;notes();a.log.push({by:'system',text:'制作メモの決定も取り消しました。'})}
+a.log.push({by:'system',text:'条件変更を取り消しました。'});draw(true);tagUI();foot();$('input').focus();say('条件変更を取り消しました。')}
+function syncFromMemo(){const a=s(),r={...a.recipe};for(const [k,v] of Object.entries({hair:'銀髪',time:'夜',light:'逆光なし'})){const prior=a.fromMemo[k],wanted=a.memo.some(n=>n.key===k);if(wanted){if(!prior||r[k]!==prior.value)a.fromMemo[k]={before:r[k],value:v};r[k]=v}else if(prior){if(r[k]===prior.value)r[k]=prior.before;delete a.fromMemo[k]}}const d=patch(r);a.needsTags=false;return d}
+function applyLarge(turn){const a=s();turn.confirm=null;const fmBefore=JSON.parse(JSON.stringify(a.fromMemo));
+memo('scene','構図とキャラを変更（大きな変更）','あなたの決定 · 発言 #'+turn.id,'大きな変更を制作メモに記録しました。');
+const memoBefore=a.mu.length?a.mu[a.mu.length-1]:null;
+const d=patch({...a.recipe,scene:'湖畔の町並み',color:'鮮やかな色調',hair:'茶髪'});
+const t2={by:'ai',text:'大きな変更を生成条件に反映しました。',id:++serial};if(d){d.memoLink=true;d.memoBefore=memoBefore;d.fmBefore=fmBefore;t2.d=d}offer(t2);a.log.push(t2);draw(true);tagUI();foot();say('大きな変更を反映しました。')}
+function propose(turn){const a=s();if(turn.rev!==a.rev||turn.used||busy||current)return;
+if(flow==='B'){a.staged=turn;draw(true);foot();$('doB').focus();say('条件を反映しました。画像はまだ生成していません。')}
+else generate(turn)}
+function generate(turn){const a=s();if(!turn||turn.rev!==a.rev||turn.used||busy||current)return;
+turn.used=true;a.staged=null;const origin=m;busy={mode:origin};draw(true);foot();$('input').focus();say('模擬生成を開始しました。');
+setTimeout(()=>{a.count++;a.log.push({by:'system',text:'模擬生成 '+a.count+'枚目｜'+fmt(turn.recipe)});busy=null;if(m===origin){draw(true);say('模擬生成が完了しました。')}foot()},620)}
+$('doB').onclick=()=>generate(s().staged);
+function draw(end=false){const a=s(),l=$('log'),y=l.scrollTop;l.replaceChildren();
+if(!a.log.length)l.append(node('p','画像を見ながら相談できます。まず「文例」からどうぞ。','muted'));
+for(const t of a.log){const row=node('article',null,'msg '+t.by);row.append(node('small',t.by==='user'?'あなた':t.by==='ai'?'プロンプトメーカー':'制作台'));const p=node('p',t.text);if(t===current?.turn)p.id='typing';row.append(p);
+if(t.d){const d=t.d,part=node('div',null,'proposal');for(const k in d.old){if(d.old[k]===d.next[k])continue;const line=node('p',keyNames[k]+'：');line.append(node('span',d.old[k],'removed'),' → ',node('span',d.next[k],'added'));part.append(line)}
+part.append(node('small',Object.keys(d.old).filter(k=>d.old[k]===d.next[k]).map(k=>keyNames[k]).join('・')+'は変更なし'));
+const b=btn(d.memoLink?'条件とメモの変更を取り消す':'条件変更を取り消す',()=>undoPatch(d),'tiny');b.disabled=a.rev!==d.at;part.append(b);row.append(part)}
+if(t.confirm){const card=node('div',null,'proposal');card.append(node('p','大きな主題の変更です。構図とキャラクターを含む生成条件を置き換えます。反映しますか？'));
+card.append(btn('反映する',()=>applyLarge(t),'primary tiny'),btn('キャンセル',()=>{t.confirm=null;s().log.push({by:'system',text:'大きな変更はキャンセルされました。条件とメモは変更していません。'});draw(true);say('キャンセルしました。')},'tiny'));row.append(card)}
+if(t.suggest){const key='ai'+t.id;const b=btn('提案を制作メモに採用',()=>{memo(key,'朝霧を残す案','AI提案を手動採用 · 返信 #'+t.id,null);draw();$('notes').focus()},'tiny');b.disabled=a.memo.some(n=>n.key===key);row.append(b)}
+if(t.offer){const o=t.offer,card=node('div',null,'proposal');card.append(node('p',fmt(o.recipe),'tiny'));const label=o.used?'生成を確定済み':o.rev!==a.rev?'条件変更済み':flow==='A'?'この条件で生成しますか · 1枚':a.staged===o?'条件を反映済み':'この条件を反映';const b=btn(label,()=>propose(o),flow==='A'?'primary tiny':'tiny');b.disabled=!!busy||!!current||o.used||o.rev!==a.rev||(flow==='B'&&a.staged===o);b.dataset.offer='yes';card.append(b);row.append(card)}
+l.append(row)}
+l.scrollTop=end?l.scrollHeight:y}
+function offer(t){const a=s();if(!a.tags&&a.needsTags){t.text+=' まだタグは作っていません。「タグを作って」で条件を作成できます。';return}t.offer={recipe:{...a.recipe},rev:a.rev,used:false}}
+$('jump').onclick=()=>{const last=[...$('log').querySelectorAll('[data-offer]')].reverse().find(b=>!b.disabled);if(last){last.focus();return}
+const t={by:'ai',text:!s().tags&&s().needsTags?'先にタグを作りましょう。':'現在の条件で1枚作りますか？'};offer(t);s().log.push(t);draw(true);if(t.offer)[...$('log').querySelectorAll('[data-offer]')].at(-1).focus();else $('input').focus()};
+$('flow').onchange=()=>{flow=$('flow').value;draw();foot()};
+function end(stopped=false){const w=current;if(!w)return;clearInterval(timer);current=null;const a=s();
+if(stopped)w.turn.text+=(w.turn.text?'\n':'')+'応答を停止しました。';
+else if(w.done)w.done(w.turn);
+a.versions.push({turn:w.turn.id,memo:a.memo.slice()});
+const focused=document.activeElement===$('stop');$('stop').hidden=true;$('send').disabled=false;draw(true);if(focused)$('input').focus();foot();say(stopped?'応答停止':'応答完了')}
+$('stop').onclick=()=>end(true);
+function send(){if(current)return;const a=s(),raw=$('input').value.trim();if(!raw){$('input').focus();return}
+const t=raw.replace(/[。！!]+$/u,''),d=decision(t),id=++serial;let text='朝霧を残すと、稜線の奥行きが伝わりそうです。',done;
+$('input').value='';a.log.push({by:'user',text:raw});a.notice=null;notes();
+if(d){const [k,v]=d;const added=memo(k,v,'あなたの決定 · 発言 #'+id,v?'制作メモに追加：'+v:'制作メモから撤回：銀髪');
+if(added&&a.tags){const memoBefore=a.mu[a.mu.length-1],fmBefore=JSON.parse(JSON.stringify(a.fromMemo));text=v?'制作メモを更新し、生成条件にも自動で反映しました。差分を確認できます。生成はまだ始めません。':'制作メモから撤回し、生成条件も戻しました。生成はまだ始めません。';done=w=>{w.d=syncFromMemo();if(w.d){w.d.memoLink=true;w.d.memoBefore=memoBefore;w.d.fmBefore=fmBefore}else w.text='制作メモを更新しました。生成条件はすでに同じ内容でした。';offer(w)}}
+else text=added?'制作メモを更新しました。生成はまだ始めません。':'撤回する項目はありません。'}
+else if(t==='タグを作って'||t==='タグを作ってください'){text='いまの案をタグにしました。条件を見て、生成するか決められます。';done=w=>{syncFromMemo();a.needsTags=false;a.tags=true;a.expanded=true;tagUI();offer(w)}}
+else if(t==='全然違う構図で、キャラも変えたい'||t==='新しい絵にしよう'){if(a.tags){text='大きな主題の変更として判定しました。生成条件へ反映する前に、一度だけ確認します。';done=w=>{w.confirm=true}}else{memo('scene','全然違う構図で、キャラも変えたい','あなたの決定 · 発言 #'+id,'制作メモに追加：大きな主題の変更');text='制作メモに残しました。まだタグは作っていないので、条件への反映はありません。'}}
+else if(t==='光を弱めて'){text='光だけ弱めます。髪・時間帯・構図・色調はそのままです。';done=w=>{w.d=patch({...a.recipe,light:a.recipe.light==='逆光なし'?'柔らかな環境光':'柔らかな光'});if(!w.d)w.text='すでに弱い光です。条件は変更していません。';offer(w)}}
+else if(t==='前の案に戻して'){text='ひとつ前の生成条件に戻します。制作メモと生成済み画像はそのままです。';done=w=>{w.d=previous();if(!w.d)w.text='戻せる生成条件はまだありません。';offer(w)}}
+else if(t==='生成して'){text='まだ生成していません。条件を確認してください。';done=offer}
+else if(/かな[ぁあ？?]*$/u.test(t))text='候補として考えておきましょう。メモや条件は変えていません。';
+else if(t==='今日はいい天気')text='ですね。制作を再開するときに声をかけてください。';
+else done=w=>w.suggest=true;
+const turn={by:'ai',text:'',id};a.log.push(turn);current={turn,done};$('send').disabled=true;$('stop').hidden=false;draw(true);foot();$('stop').focus();say('応答を開始しました。');
+const chars=Array.from(text);let i=0;timer=setInterval(()=>{i+=2;turn.text=chars.slice(0,i).join('');const log=$('log'),follow=log.scrollHeight-log.scrollTop-log.clientHeight<34;$('typing').textContent=turn.text;if(follow)log.scrollTop=log.scrollHeight;if(i>=chars.length)end()},45)}
+$('send').onclick=send;$('input').onkeydown=e=>{if(e.key==='Enter'&&e.ctrlKey&&!e.isComposing){e.preventDefault();send()}};
+function change(next){if(m===next)return;if(current)end(true);s().draft=$('input').value;$('own').value='';m=next;$('input').value=s().draft;
+for(const k of ['general','adult'])$(k).setAttribute('aria-pressed',k===m);notes();tagUI();draw(true);foot();say(next==='general'?'一般向けに切り替えました。':'成人向けに切り替えました。')}
+$('general').onclick=()=>change('general');$('adult').onclick=()=>adultOk?change('adult'):$('adultD').showModal();$('adOK').onclick=()=>{adultOk=true;$('adultD').close();change('adult')};
+frame();notes();tagUI();draw();foot();
+</script></html>
